@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIGALO STUDIO</title>
+<meta name="description" content="TIGALO STUDIO(ティガロ スタジオ)は、日常のちょっとした不便をシンプルなアプリにする個人開発スタジオです。">
+
+<!-- Google Search Console 所有権確認用メタタグ: 発行後、ここに <meta name="google-site-verification" content="..."> を追加してください -->
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%2322C55E'/%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='white' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #FAFAF7;
+    --ink: #222222;
+    --ink-soft: #666666;
+    --ink-softer: #555555;
+    --ink-faint: #999999;
+    --accent: #22C55E;
+    --accent-hover: #1BAF4E;
+    --tag-bg: #F0F0F0;
+    --border: #E5E5E5;
+    --white: #FFFFFF;
+    --max-w: 1120px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* Header */
+  header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(250, 250, 247, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header-inner {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 18px 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .wordmark {
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  nav.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  nav.main-nav a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+  }
+
+  nav.main-nav a:hover { color: var(--accent); }
+
+  .menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+  }
+
+  .menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    margin: 5px 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Mobile overlay menu */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 100;
+    display: none;
+    flex-direction: column;
+    padding: 20px 28px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+  }
+
+  .mobile-menu nav {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu nav a {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 700;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Buttons */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--accent);
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    padding: 15px 30px;
+    border-radius: 10px;
+    transition: transform 0.15s ease, background 0.15s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent-hover);
+    transform: translateX(3px);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+  }
+
+  .link-arrow:hover { transform: translateX(3px); }
+
+  /* Hero */
+  .hero {
+    padding: 72px 0 96px;
+  }
+
+  .hero-grid {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .hero-text { flex: 1; min-width: 0; }
+
+  .hero h1 {
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  .hero-rule {
+    width: 44px;
+    height: 3px;
+    background: var(--accent);
+    margin: 22px 0 26px;
+  }
+
+  .hero-tagline {
+    font-size: 18px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    max-width: 34ch;
+    margin: 0 0 32px;
+  }
+
+  .hero-illust { flex: 1; min-width: 0; }
+
+  /* Section shared */
+  section { padding: 88px 0; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    line-height: 1.4;
+    margin: 0 0 48px;
+    max-width: 26ch;
+  }
+
+  /* Apps */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+
+  .app-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+  }
+
+  .app-card-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .app-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .app-title { font-weight: 800; font-size: 22px; }
+  .app-subtitle { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+
+  .app-desc {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin: 0 0 20px;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 26px;
+  }
+
+  .tag-pill {
+    background: var(--tag-bg);
+    color: var(--ink-softer);
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  .card-soon {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 280px;
+  }
+
+  .card-soon-title {
+    font-weight: 800;
+    font-size: 17px;
+    letter-spacing: 0.01em;
+  }
+
+  /* About */
+  .about-text { max-width: 62ch; }
+
+  .about-text p {
+    font-size: 16px;
+    line-height: 2;
+    color: var(--ink-soft);
+    margin: 0 0 20px;
+  }
+
+  .about-text p:last-of-type { margin-bottom: 0; }
+
+  /* Privacy */
+  .privacy-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px;
+    max-width: 62ch;
+  }
+
+  .privacy-box p {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--ink-soft);
+    margin: 0 0 16px;
+  }
+
+  .privacy-box p:last-child { margin-bottom: 0; }
+
+  /* Contact */
+  .contact-section { text-align: center; }
+
+  .contact-section .section-title { margin-left: auto; margin-right: auto; }
+
+  .contact-text {
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.9;
+    margin: 0 auto 28px;
+    max-width: 40ch;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 56px 0 40px;
+    text-align: center;
+  }
+
+  .footer-word {
+    font-weight: 800;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .footer-nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 13px;
+  }
+
+  .footer-nav a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--ink-faint);
+    margin-top: 32px;
+  }
+
+  @media (max-width: 860px) {
+    nav.main-nav { display: none; }
+    .menu-btn { display: block; }
+    .hero-grid { flex-direction: column; }
+    .hero-illust { width: 100%; max-width: 320px; }
+    .apps-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#home" class="wordmark">TIGALO STUDIO</a>
+    <nav class="main-nav">
+      <a href="#home">HOME</a>
+      <a href="#apps">APPS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#privacy">PRIVACY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <span class="wordmark">TIGALO STUDIO</span>
+    <button class="menu-btn" id="closeMenuBtn" aria-label="メニューを閉じる" style="display:block">
+      <span style="transform:rotate(45deg) translate(4px,5px)"></span>
+      <span style="opacity:0"></span>
+      <span style="transform:rotate(-45deg) translate(4px,-5px)"></span>
+    </button>
+  </div>
+  <nav>
+    <a href="#home" class="mm-link">HOME</a>
+    <a href="#apps" class="mm-link">APPS</a>
+    <a href="#about" class="mm-link">ABOUT</a>
+    <a href="#privacy" class="mm-link">PRIVACY</a>
+    <a href="#contact" class="mm-link">CONTACT</a>
+  </nav>
+</div>
+
+<main>
+  <section id="home" class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <h1>TIGALO<br>STUDIO</h1>
+        <div class="hero-rule"></div>
+        <p class="hero-tagline">日常のちょっとした不便を、<br>シンプルなアプリに。</p>
+        <a href="#apps" class="btn-primary">
+          OUR APPS
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="hero-illust">
+        <svg viewBox="0 0 420 340" width="100%" style="display:block;overflow:visible">
+          <circle cx="40" cy="236" r="3" fill="#22C55E"/>
+          <circle cx="60" cy="60" r="3" fill="#E5E5E5"/>
+          <path d="M40 236c2-16 26-14 26 4" fill="none" stroke="#222222" stroke-width="2.5" stroke-linecap="round"/>
+          <rect x="190" y="18" width="150" height="270" rx="26" fill="#FFFFFF" stroke="#222222" stroke-width="3"/>
+          <rect x="248" y="30" width="34" height="5" rx="2.5" fill="#222222"/>
+          <rect x="212" y="70" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="252" y="70" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="292" y="70" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="212" y="110" width="30" height="30" rx="8" fill="#22C55E"/>
+          <rect x="252" y="110" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="292" y="110" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="212" y="150" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="252" y="150" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="292" y="150" width="30" height="30" rx="8" fill="#FFFFFF" stroke="#222222" stroke-width="2.5"/>
+          <rect x="212" y="200" width="110" height="60" rx="10" fill="#FAFAF7" stroke="#222222" stroke-width="2"/>
+          <line x1="222" y1="218" x2="302" y2="218" stroke="#E5E5E5" stroke-width="2"/>
+          <line x1="222" y1="236" x2="280" y2="236" stroke="#E5E5E5" stroke-width="2"/>
+          <circle cx="100" cy="90" r="4" fill="#E5E5E5"/>
+          <circle cx="120" cy="280" r="3" fill="#22C55E"/>
+          <circle cx="380" cy="120" r="4" fill="#E5E5E5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="apps">
+    <div class="wrap">
+      <div class="section-label">Apps</div>
+      <h2 class="section-title">小さく作って、ちゃんと使える。<br>そんなアプリを、少しずつ。</h2>
+      <div class="apps-grid">
+        <div class="app-card">
+          <div class="app-card-head">
+            <div class="app-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M4 12.5l4 4L20 5.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <div class="app-title">SHIFT SNAP</div>
+              <div class="app-subtitle">シフトスナップ</div>
+            </div>
+          </div>
+          <p class="app-desc">単発バイト・シフトを<br>かんたんに管理できるアプリです。</p>
+          <div class="tag-row">
+            <span class="tag-pill">シフト管理</span>
+            <span class="tag-pill">カレンダー連携</span>
+            <span class="tag-pill">シンプル設計</span>
+          </div>
+          <a href="#" class="link-arrow">
+            VIEW APP
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+
+        <div class="card-soon">
+          <div class="card-soon-title">MORE APPS<br>COMING SOON</div>
+          <svg width="180" height="90" viewBox="0 0 180 90" style="margin-top:22px">
+            <circle cx="40" cy="24" r="12" fill="#F0F0F0"/>
+            <circle cx="90" cy="45" r="16" fill="#F0F0F0"/>
+            <circle cx="140" cy="20" r="10" fill="#F0F0F0"/>
+            <circle cx="65" cy="70" r="8" fill="#F0F0F0"/>
+            <circle cx="130" cy="66" r="13" fill="#F0F0F0"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="section-label">About</div>
+      <h2 class="section-title">スタジオについて</h2>
+      <div class="about-text">
+        <p>TIGALO STUDIOは、日常のちょっとした不便や「あったら便利」を見つけて、シンプルで使いやすいアプリをつくります。</p>
+        <p>機能を詰め込むのではなく、必要なものを、必要なだけ。あなたの毎日に、そっと寄り添うアプリを。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="privacy">
+    <div class="wrap">
+      <div class="section-label">Privacy</div>
+      <h2 class="section-title">プライバシーポリシー</h2>
+      <div class="privacy-box">
+        <p>現時点で、当スタジオが提供するアプリ(SHIFT SNAPなど)は利用者の個人情報を収集しません。アプリ内のデータは端末内にのみ保存され、外部サーバーへ送信されることはありません。</p>
+        <p>今後、広告機能等の追加に伴い本ポリシーを更新する場合があります。更新した内容は本ページに反映します。</p>
+        <p>本ポリシーに関するお問い合わせは <a href="mailto:tingtangman@gmail.com" style="color:var(--accent);font-weight:600;">tingtangman@gmail.com</a> までご連絡ください。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <div class="wrap">
+      <div class="section-label">Contact</div>
+      <h2 class="section-title">お問い合わせ</h2>
+      <p class="contact-text">アプリに関するお問い合わせ、<br>ご意見・ご要望などはこちらから。</p>
+      <a href="mailto:tingtangman@gmail.com" class="btn-primary">CONTACT</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-word">TIGALO STUDIO</div>
+    <nav class="footer-nav">
+      <a href="#home">HOME</a>
+      <a href="#apps">APPS</a>
+      <a href="#about">ABOUT</a>
+      <a href="#privacy">PRIVACY POLICY</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+    <div class="footer-copy">&copy; 2026 TIGALO STUDIO</div>
+  </div>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const closeMenuBtn = document.getElementById('closeMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', () => mobileMenu.classList.add('open'));
+  closeMenuBtn.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+  document.querySelectorAll('.mm-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+</script>
+
+</body>
+</html>
