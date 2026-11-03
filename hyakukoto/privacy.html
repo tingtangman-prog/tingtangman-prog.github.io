@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>100のこと プライバシーポリシー</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap">
+<style>
+  /* Layout: single readable column, a quiet header, numbered-free sections, one highlighted deletion block. */
+  :root {
+    --bg: #f6f5fa;
+    --surface: #ffffff;
+    --fg: #1d2036;
+    --muted: #5b5f78;
+    --line: #dcdbea;
+    --accent: #8a6a1f;
+    --accent-soft: #f1e8cf;
+    --navy: #232a52;
+    --danger: #a4332b;
+    --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141729;
+      --surface: #1c2038;
+      --fg: #e9e8f2;
+      --muted: #a3a6bf;
+      --line: #32375a;
+      --accent: #e2c36f;
+      --accent-soft: #2c2a3c;
+      --navy: #b9c0ee;
+      --danger: #ff9a8f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141729;
+    --surface: #1c2038;
+    --fg: #e9e8f2;
+    --muted: #a3a6bf;
+    --line: #32375a;
+    --accent: #e2c36f;
+    --accent-soft: #2c2a3c;
+    --navy: #b9c0ee;
+    --danger: #ff9a8f;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.85;
+    padding-block: 40px 72px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  main { max-width: 720px; margin: 0 auto; min-width: 0; }
+
+  header { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.14em; color: var(--accent); font-weight: 500; margin: 0 0 8px; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(26px, 6vw, 34px);
+    line-height: 1.4;
+    margin: 0 0 12px;
+    color: var(--navy);
+    text-wrap: balance;
+  }
+  .meta { font-size: 14px; color: var(--muted); margin: 0; }
+
+  .lead { margin: 24px 0 0; }
+
+  nav.toc { margin: 24px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  nav.toc p { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
+  nav.toc ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  nav.toc a { font-size: 14px; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line); }
+  nav.toc a:hover, nav.toc a:focus-visible { border-bottom-color: var(--accent); }
+
+  section { margin-top: 44px; scroll-margin-top: 16px; }
+  h2 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    line-height: 1.5;
+    margin: 0 0 12px;
+    color: var(--navy);
+  }
+  p { margin: 0 0 14px; }
+  ul.plain { margin: 0 0 14px; padding-left: 1.3em; }
+  ul.plain li { margin-bottom: 4px; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14.5px; line-height: 1.7; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 700; color: var(--navy); background: var(--accent-soft); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+
+  .note { font-size: 14px; color: var(--muted); }
+
+  .delete-box {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--danger);
+    border-radius: 8px;
+    padding: 20px 22px;
+  }
+  .delete-box h3 { font-size: 16px; margin: 18px 0 6px; color: var(--fg); }
+  .delete-box h3:first-of-type { margin-top: 0; }
+  .delete-box ol { margin: 0 0 14px; padding-left: 1.4em; }
+  .delete-box li { margin-bottom: 2px; }
+
+  .mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 8px 0 14px; }
+  .mail-addr {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+    font-size: 15px;
+    background: var(--accent-soft);
+    padding: 6px 12px;
+    border-radius: 6px;
+    user-select: all;
+    overflow-wrap: anywhere;
+  }
+  button.copy {
+    font: inherit; font-size: 14px;
+    padding: 6px 14px;
+    border-radius: 6px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--navy);
+    cursor: pointer;
+  }
+  button.copy:hover { border-color: var(--accent); }
+  button.copy:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer p { margin: 0 0 4px; }
+
+  .back { display: inline-block; margin: 0 0 18px; font-size: 14px; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .back:hover, .back:focus-visible { color: var(--navy); border-bottom-color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <a class="back" href="../index.html">&larr; TIGALO STUDIO</a>
+    <p class="eyebrow">TIGALO STUDIO</p>
+    <h1>「100のこと」プライバシーポリシー</h1>
+    <p class="meta">制定日 2026年11月1日 ／ 最終更新日 2026年11月1日</p>
+  </header>
+
+  <p class="lead">
+    Tigalo Studio(以下「当方」)は、Androidアプリ「100のこと」(以下「本アプリ」)で取り扱うユーザーの情報について、以下のとおり定めます。
+  </p>
+
+  <nav class="toc" aria-label="目次">
+    <p>目次</p>
+    <ul>
+      <li><a href="#collect">取得する情報</a></li>
+      <li><a href="#purpose">利用目的</a></li>
+      <li><a href="#third">外部サービスと第三者提供</a></li>
+      <li><a href="#storage">保存場所と期間</a></li>
+      <li><a href="#delete">アカウント・データの削除</a></li>
+      <li><a href="#children">年少のユーザー</a></li>
+      <li><a href="#change">改定</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <section id="collect">
+    <h2>取得する情報</h2>
+    <p>本アプリは、利用に必要な次の情報を取得します。</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>情報</th><th>内容</th><th>保存先</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Googleアカウント情報</td>
+            <td>Googleでログインする際に提供される、表示名・メールアドレス・プロフィール画像のURL・ユーザーID</td>
+            <td>Firebase(Google)</td>
+          </tr>
+          <tr>
+            <td>プロフィール</td>
+            <td>生年月日</td>
+            <td>Firebase(Google)</td>
+          </tr>
+          <tr>
+            <td>目標データ</td>
+            <td>ユーザーが入力した目標のタイトル・メモ・カテゴリ・期限・優先度・達成状況・達成日・作成日時</td>
+            <td>Firebase(Google)</td>
+          </tr>
+          <tr>
+            <td>星の本の背景写真</td>
+            <td>ユーザーが端末から選んだ写真</td>
+            <td>お使いの端末内のみ</td>
+          </tr>
+          <tr>
+            <td>ホーム画面ウィジェットの進捗</td>
+            <td>達成数と登録数</td>
+            <td>お使いの端末内のみ</td>
+          </tr>
+          <tr>
+            <td>広告に関する情報</td>
+            <td>広告ID、IPアドレス、端末の種類・OSのバージョン、広告の表示・クリックの情報</td>
+            <td>Google AdMob</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>背景写真は当方のサーバーにもFirebaseにも送信されません。アプリを削除すると、端末内の写真も消えます。</p>
+    <p>本アプリは、広告の表示のためにGoogle AdMobを利用しています。AdMobにより、広告ID(広告識別子)、IPアドレス、端末の種類やOSのバージョン、広告の表示・クリックの情報などが取得され、広告の配信、効果の測定、不正の防止に使われます。広告IDは、端末の設定からリセットや無効化ができます。アクセス解析の仕組みは組み込んでいません。位置情報と連絡先は取得しません。</p>
+    <p>また、Firebaseの仕組みとして、通信に必要なIPアドレスやアプリのインストール識別子などが、Googleによって技術的に処理される場合があります。</p>
+  </section>
+
+  <section id="purpose">
+    <h2>利用目的</h2>
+    <ul class="plain">
+      <li>ログインしたユーザーを識別し、ユーザー本人の目標データを表示・保存するため</li>
+      <li>機種変更などで同じGoogleアカウントにログインしたときに、データを引き継ぐため</li>
+      <li>期限が近い目標をお知らせする通知を表示するため(通知の判定は端末内で行われます)</li>
+      <li>生年月日を、「○歳までに」のように年齢で期限を決めた目標の計算に使うため</li>
+      <li>アプリ内に広告を表示し、アプリの運営費をまかなうため</li>
+    </ul>
+    <p>上記以外の目的では利用しません。</p>
+  </section>
+
+  <section id="third">
+    <h2>外部サービスと第三者提供</h2>
+    <p>本アプリは、ログインとデータ保存に、Google LLCが提供する次のサービスを利用しています。</p>
+    <ul class="plain">
+      <li>Firebase Authentication(Googleアカウントでのログイン)</li>
+      <li>Cloud Firestore(プロフィール・目標データの保存)</li>
+      <li>Google AdMob(広告の配信)</li>
+    </ul>
+    <p>これらのサービスのサーバーは日本国外にある場合があります。取得した情報は、これらのサービスによる処理を除き、第三者に販売・提供しません。ただし、法令に基づく開示請求があった場合は、法令の定めに従って対応することがあります。</p>
+    <p class="note">Googleによる情報の取り扱いは、Googleのプライバシーポリシー、Firebaseのプライバシーとセキュリティに関する情報、およびGoogle AdMobの規約に従います。</p>
+  </section>
+
+  <section id="storage">
+    <h2>保存場所と期間</h2>
+    <p>プロフィールと目標データは、ユーザーがアカウントを削除するまで、ユーザー本人のみが読み書きできる形でFirestoreに保存されます。他のユーザーが閲覧することはできません。通信は暗号化されています。</p>
+  </section>
+
+  <section id="delete">
+    <h2>アカウント・データの削除</h2>
+    <div class="delete-box">
+      <h3>アプリ内から削除する(推奨)</h3>
+      <ol>
+        <li>アプリ右上のメニューから「設定」を開く</li>
+        <li>いちばん下の「アカウントを削除」をタップする</li>
+        <li>確認画面で「削除する」を選び、Googleアカウントで本人確認をする</li>
+      </ol>
+      <p>削除すると、プロフィールと目標データがサーバーから削除され、ログイン用のアカウントも削除されます。この端末に保存した背景写真も同時に削除されます。この操作は元に戻せません。削除前に、設定画面の「エクスポート」で目標データを書き出せます。</p>
+
+      <h3>アプリを使えない場合の削除依頼</h3>
+      <p>アプリをすでにアンインストールしている場合などは、次のメールアドレスに削除を依頼してください。ログインに使っていたGoogleアカウントのメールアドレスから、件名を「100のこと アカウント削除依頼」として送信してください。本人確認のうえ、原則として14日以内に、サーバー上のデータを削除します。</p>
+      <div class="mail-row">
+        <span class="mail-addr" id="mailAddr">tingtangman@gmail.com</span>
+        <button class="copy" id="copyBtn" type="button">コピー</button>
+      </div>
+      <p class="note" style="margin:0">削除後、Googleのシステム上のバックアップなどから完全に消えるまで、一定の期間を要する場合があります。</p>
+    </div>
+  </section>
+
+  <section id="children">
+    <h2>年少のユーザー</h2>
+    <p>本アプリは13歳未満の方を対象としていません。13歳未満の方は、利用しないでください。</p>
+  </section>
+
+  <section id="change">
+    <h2>改定</h2>
+    <p>本ポリシーの内容は、必要に応じて改定することがあります。重要な変更がある場合は、このページで告知します。改定後の内容は、このページに掲載した時点で効力を生じます。</p>
+  </section>
+
+  <section id="contact">
+    <h2>お問い合わせ</h2>
+    <p>本ポリシーや個人情報の取り扱いに関するお問い合わせは、次の窓口までお願いします。</p>
+    <p style="margin:0">Tigalo Studio<br>メール: tingtangman@gmail.com</p>
+  </section>
+
+  <footer>
+    <p>© Tigalo Studio</p>
+  </footer>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copyBtn');
+    var addr = document.getElementById('mailAddr');
+    if (!btn || !addr) return;
+    function selectAddr() {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(addr);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (e) {}
+    }
+    btn.addEventListener('click', function () {
+      var text = addr.textContent.trim();
+      var done = function () { btn.textContent = 'コピーしました'; setTimeout(function () { btn.textContent = 'コピー'; }, 2000); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { selectAddr(); btn.textContent = '選択しました'; });
+      } else {
+        selectAddr();
+        btn.textContent = '選択しました';
+      }
+    });
+  })();
+</script>
+</body>
+</html>
