@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>まんなか漢字 プライバシーポリシー</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap">
+<style>
+  :root {
+    --bg: #f6f0e4;
+    --surface: #fffcf5;
+    --fg: #2b2522;
+    --muted: #6b6058;
+    --line: #dccfb8;
+    --accent: #c8432f;
+    --accent-soft: #f3ddd6;
+    --navy: #2b2522;
+    --danger: #a4332b;
+    --font-display: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+    --font-body: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14192b;
+      --surface: #1e2338;
+      --fg: #ede6d6;
+      --muted: #b7b0a0;
+      --line: #32375a;
+      --accent: #d9b968;
+      --accent-soft: #2a3047;
+      --navy: #b9c0ee;
+      --danger: #ff9a8f;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #14192b; --surface: #1e2338; --fg: #ede6d6; --muted: #b7b0a0;
+    --line: #32375a; --accent: #d9b968; --accent-soft: #2a3047; --navy: #b9c0ee; --danger: #ff9a8f;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg); color: var(--fg); font-family: var(--font-body);
+    font-size: 16px; line-height: 1.85;
+    padding-block: 40px 72px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  main { max-width: 720px; margin: 0 auto; min-width: 0; }
+
+  header { padding-bottom: 28px; border-bottom: 1px solid var(--line); margin-bottom: 8px; }
+  .eyebrow { font-size: 13px; letter-spacing: 0.14em; color: var(--accent); font-weight: 500; margin: 0 0 8px; }
+  h1 {
+    font-family: var(--font-display); font-size: clamp(26px, 6vw, 34px); line-height: 1.4;
+    margin: 0 0 12px; color: var(--navy); text-wrap: balance;
+  }
+  .meta { font-size: 14px; color: var(--muted); margin: 0; }
+  .lead { margin: 24px 0 0; }
+
+  nav.toc { margin: 24px 0 0; padding: 16px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; }
+  nav.toc p { margin: 0 0 6px; font-size: 13px; color: var(--muted); }
+  nav.toc ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+  nav.toc a { font-size: 14px; color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--line); }
+  nav.toc a:hover, nav.toc a:focus-visible { border-bottom-color: var(--accent); }
+
+  section { margin-top: 44px; scroll-margin-top: 16px; }
+  h2 { font-family: var(--font-display); font-size: 21px; line-height: 1.5; margin: 0 0 12px; color: var(--navy); }
+  p { margin: 0 0 14px; }
+  ul.plain { margin: 0 0 14px; padding-left: 1.3em; }
+  ul.plain li { margin-bottom: 4px; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14.5px; line-height: 1.7; }
+  th, td { text-align: left; vertical-align: top; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+  th { font-weight: 700; color: var(--navy); background: var(--accent-soft); white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+
+  .note { font-size: 14px; color: var(--muted); }
+
+  .delete-box {
+    background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--danger);
+    border-radius: 8px; padding: 20px 22px;
+  }
+  .delete-box h3 { font-size: 16px; margin: 18px 0 6px; color: var(--fg); }
+  .delete-box h3:first-of-type { margin-top: 0; }
+  .delete-box ol { margin: 0 0 14px; padding-left: 1.4em; }
+  .delete-box li { margin-bottom: 2px; }
+
+  .mail-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 8px 0 14px; }
+  .mail-addr {
+    font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 15px;
+    background: var(--accent-soft); padding: 6px 12px; border-radius: 6px; user-select: all; overflow-wrap: anywhere;
+  }
+  button.copy {
+    font: inherit; font-size: 14px; padding: 6px 14px; border-radius: 6px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--navy); cursor: pointer;
+  }
+  button.copy:hover { border-color: var(--accent); }
+  button.copy:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--line); font-size: 14px; color: var(--muted); }
+  footer p { margin: 0 0 4px; }
+
+  .back { display: inline-block; margin: 0 0 18px; font-size: 14px; color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .back:hover, .back:focus-visible { color: var(--navy); border-bottom-color: var(--accent); }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <a class="back" href="../index.html">&larr; TIGALO STUDIO</a>
+    <p class="eyebrow">TIGALO STUDIO</p>
+    <h1>「まんなか漢字」プライバシーポリシー</h1>
+    <p class="meta">制定日 2026年11月28日</p>
+  </header>
+
+  <p class="lead">
+    Tigalo Studio(以下「当方」)は、Androidアプリ「まんなか漢字」(以下「本アプリ」)で取り扱うユーザーの情報について、以下のとおり定めます。本アプリはアカウント登録やログインを必要とせず、遊んだ記録は端末の中だけに保存されます。
+  </p>
+
+  <nav class="toc" aria-label="目次">
+    <p>目次</p>
+    <ul>
+      <li><a href="#collect">取得する情報</a></li>
+      <li><a href="#purpose">利用目的</a></li>
+      <li><a href="#third">外部サービスと第三者提供</a></li>
+      <li><a href="#storage">保存場所と削除</a></li>
+      <li><a href="#children">年少のユーザー</a></li>
+      <li><a href="#change">改定</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+
+  <section id="collect">
+    <h2>取得する情報</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>情報</th><th>内容</th><th>保存先</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>遊んだ記録</td>
+            <td>クリアした問題、まちがえた回数、ヒントの残り回数、「今日の1問」のスタンプ、効果音などの設定</td>
+            <td>ユーザーの端末内のみ(当方には送信されません)</td>
+          </tr>
+          <tr>
+            <td>購入情報(広告削除)</td>
+            <td>買い切りの「広告削除」の購入状況。クレジットカード番号などの決済情報そのものは取得しません</td>
+            <td>Google Play(Google Play 請求サービス)</td>
+          </tr>
+          <tr>
+            <td>広告に関する情報</td>
+            <td>広告ID、IPアドレス、端末の種類・OSのバージョン、広告の表示・クリック・動画の視聴の情報</td>
+            <td>Google AdMob</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>本アプリは、広告の表示(バナー広告・全画面広告・ヒントと交換できる動画広告)のためにGoogle AdMobを利用しています。AdMobにより、広告ID(広告識別子)、IPアドレス、端末の種類やOSのバージョン、広告の表示・クリックの情報などが取得され、広告の配信、効果の測定、不正の防止に使われます。広告IDは、端末の設定からリセットや無効化ができます。EU/EEA・英国のユーザーには、Googleの定めるUMP(User Messaging Platform)の仕組みを通じて、広告に関する同意の選択肢を表示します。</p>
+    <p>氏名、メールアドレス、位置情報、連絡先、写真などは取得しません。アクセス解析の仕組みも組み込んでいません。</p>
+  </section>
+
+  <section id="purpose">
+    <h2>利用目的</h2>
+    <ul class="plain">
+      <li>遊んだ記録を保存し、続きから遊べるようにするため(端末内で処理されます)</li>
+      <li>「広告削除」の購入状況を確認し、広告を表示しないようにするため</li>
+      <li>アプリ内に広告を表示し、アプリの運営費をまかなうため</li>
+    </ul>
+    <p>上記以外の目的では利用しません。</p>
+  </section>
+
+  <section id="third">
+    <h2>外部サービスと第三者提供</h2>
+    <p>本アプリは、広告・購入・レビューの依頼に、Google LLCが提供する次のサービスを利用しています。</p>
+    <ul class="plain">
+      <li>Google AdMob(広告の配信)</li>
+      <li>Google User Messaging Platform(広告に関する同意の確認)</li>
+      <li>Google Play 請求サービス(広告削除の購入処理)</li>
+      <li>Google Play In-App Review API(アプリ内でのレビューの依頼)</li>
+    </ul>
+    <p>これらのサービスのサーバーは日本国外にある場合があります。当方自身は、ユーザーの情報を収集・保存するサーバーを持っていません。取得した情報は、これらのサービスによる処理を除き、第三者に販売・提供しません。ただし、法令に基づく開示請求があった場合は、法令の定めに従って対応することがあります。</p>
+    <p class="note">Googleによる情報の取り扱いは、Googleのプライバシーポリシー、Google AdMobの規約、およびGoogle Playの規約に従います。</p>
+  </section>
+
+  <section id="storage">
+    <h2>保存場所と削除</h2>
+    <p>遊んだ記録は、ユーザーの端末内にだけ保存されます。アプリを削除する、または端末の設定からアプリのデータを消去すると、記録はすべて削除されます。当方のサーバーには記録が残らないため、削除の依頼は必要ありません。広告削除の購入履歴は、Google Play側の記録として残り、同じGoogleアカウントであれば「購入を復元する」で引き継げます。</p>
+  </section>
+
+  <section id="children">
+    <h2>年少のユーザー</h2>
+    <p>本アプリは13歳未満の方を対象としていません。</p>
+  </section>
+
+  <section id="change">
+    <h2>改定</h2>
+    <p>本ポリシーの内容は、必要に応じて改定することがあります。重要な変更がある場合は、このページで告知します。改定後の内容は、このページに掲載した時点で効力を生じます。</p>
+  </section>
+
+  <section id="contact">
+    <h2>お問い合わせ</h2>
+    <p>本ポリシーや情報の取り扱いに関するお問い合わせは、次の窓口までお願いします。</p>
+    <p style="margin:0">Tigalo Studio<br>メール: tingtangman@gmail.com</p>
+    <p class="note" style="margin-top:14px">熟語と読みのデータは、JMdict(Electronic Dictionary Research and Development Group)を CC BY-SA 4.0 ライセンスのもとで加工して使用しています。</p>
+  </section>
+
+  <footer>
+    <p>© Tigalo Studio</p>
+  </footer>
+</main>
+</body>
+</html>
